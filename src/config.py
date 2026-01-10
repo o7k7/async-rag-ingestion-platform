@@ -4,15 +4,16 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 class Config(BaseSettings):
     RABBITMQ_HOST: str = 'localhost'
     RABBITMQ_USER: str = 'user'
-    RABBITMQ_PASS: str
+    RABBITMQ_PASS: str = ""
 
     S3_ENDPOINT: str = 'http://localhost:8333'
     S3_BUCKET: str = 'documents'
-    AWS_ACCESS_KEY: str
-    AWS_SECRET_KEY: str
+    S3_ACCESS_KEY: str = ''
+    S3_SECRET_KEY: str = ''
 
     QDRANT_HOST: str = 'localhost'
     QDRANT_PORT: int = 6333
+    QDRANT_COLLECTION_NAME: str = 'rag_collection'
 
     QUEUE_NAME: str = 'ingest_queue'
 
