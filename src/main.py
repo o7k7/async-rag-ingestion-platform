@@ -40,7 +40,7 @@ def _start_worker():
         try:
             credentials = pika.PlainCredentials(username=config.RABBITMQ_USER, password=config.RABBITMQ_PASS)
             connection = pika.BlockingConnection(
-                pika.ConnectionParameters(host=config.RABBITMQ_HOST, credentials=credentials)
+                pika.ConnectionParameters(host=config.RABBITMQ_HOST, port=5672, credentials=credentials)
             )
             channel = connection.channel()
 
