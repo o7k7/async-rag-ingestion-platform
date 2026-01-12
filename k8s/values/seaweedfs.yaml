@@ -1,0 +1,21 @@
+s3:
+  enabled: true
+  existingConfigSecret: seaweedfs-s3-secret
+
+volume:
+  replicas: 1
+  resources:
+    limits:
+      memory: 512Mi
+
+master:
+  replicas: 1
+  resources:
+    limits:
+      memory: 256Mi
+
+filer:
+  replicas: 1
+  resources:
+    limits:
+      memory: 256Mi

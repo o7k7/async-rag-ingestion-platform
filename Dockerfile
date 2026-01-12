@@ -21,4 +21,4 @@ RUN chown -R workeruser:workeruser /app
 
 USER workeruser
 
-CMD ["uv", "run", "src/main.py"]
+CMD ["python", "src/main.py"]

@@ -1,5 +1,7 @@
 import json
 import logging
+import os
+import sys
 import time
 
 import pika
@@ -11,6 +13,9 @@ from src.config import config
 from src.ingestion import process_task
 
 logger = logging.getLogger("WorkerLogger")
+
+print(f"WORKER STARTED. PID: {os.getpid()}", file=sys.stdout, flush=True)
+print(f"Connecting to RabbitMQ at: {os.getenv('RABBITMQ_HOST')}", file=sys.stdout, flush=True)
 
 def _callback(ch: BlockingChannel,
               method: spec.Basic.Deliver,
