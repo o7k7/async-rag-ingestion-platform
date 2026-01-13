@@ -43,7 +43,16 @@ def trigger_worker(file_name):
     )
     channel = connection.channel()
 
-    channel.queue_declare(queue=QUEUE_NAME, durable=True)
+    queue_args = {
+        "x-dead-letter-exchange": "",
+        "x-dead-letter-routing-key": f"{QUEUE_NAME}_dl"
+    }
+
+    channel.queue_declare(
+        queue=QUEUE_NAME,
+        durable=True,
+        arguments=queue_args
+    )
 
     message = json.dumps({"file_key": file_name})
 
